@@ -19,7 +19,7 @@ module GDC
     end
   
     def initialize(options={})
-      @pattern      = options[:pattern] || "*"
+      @pattern      = options[:pattern] || "**/*"
       @source_dir   = Pathname.new(options[:source_dir] || ".").expand_path
       
       fail "You have to define target directory" if options[:target_dir].nil?
@@ -34,7 +34,7 @@ module GDC
         archive = @target_dir + @archive_name
         Zip::ZipFile.open(archive, Zip::ZipFile::CREATE) do |zipfile|
           files.each do |file|
-            zipfile.add(file, Pathname.new(file).expand_path)
+            zipfile.add(file, Pathname.new(file).expand_path) unless Pathname.new(file).directory?
           end
         end    
       end
