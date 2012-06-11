@@ -23,4 +23,7 @@ Gem::Specification.new do |s|
   # s.add_runtime_dependency "rest-client"
   s.add_dependency('pry')
   s.add_dependency('rubyzip')
+  s.add_dependency('aws-s3')
+  s.add_dependency('openpgp')
+  s.add_dependency('inifile')
 end
