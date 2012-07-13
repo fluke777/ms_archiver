@@ -28,7 +28,7 @@ module GDC
       @store_to_s3  = options[:store_to_s3]
       @logger       = options[:logger] || Logger.new(File.open('/dev/null'))
       @bucket_name  = options[:bucket_name]
-      @s3_credentials_file = options[:s3_credentials_file] || '.s3cfg'
+      @s3_credentials_file = Pathname.new(options[:s3_credentials_file] || '.s3cfg').expand_path
 
       if options[:target_dir]
         @target_dir   = Pathname.new(options[:target_dir]).expand_path
@@ -37,6 +37,8 @@ module GDC
       if @store_to_s3
         fail "You have to define bucket name" if @bucket_name.nil?
       end
+
+      fail "You have to define one of target_dir, store_to_s3." if @target_dir.nil? && (@store_to_s3.nil? || !@store_to_s3)
 
       @archive_name = (options[:archive_name] || "#{Time.now.to_i}_backup.zip")
     end
