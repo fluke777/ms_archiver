@@ -5,11 +5,11 @@ require "archiver/version"
 Gem::Specification.new do |s|
   s.name        = "archiver"
   s.version     = Archiver::VERSION
-  s.authors     = ["TODO: Write your name"]
+  s.authors     = ["tereza.cihelkova@gooddata.com"]
   s.email       = ["tereza.cihelkova@gooddata.com"]
   s.homepage    = ""
-  s.summary     = %q{TODO: Write a gem summary}
-  s.description = %q{TODO: Write a gem description}
+  s.summary     = %q{Gem for archiving to S3}
+  s.description = %q{Gem for archiving to S3}
 
   s.rubyforge_project = "archiver"
 
