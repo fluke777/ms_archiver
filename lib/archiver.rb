@@ -99,7 +99,7 @@ module GDC
 
     def create_zip_archive(archive)
       FileUtils::cd(@source_dir) do
-        files = Dir.glob(@pattern)
+        files = Dir.glob(@pattern).uniq
         Zip::ZipFile.open(archive, Zip::ZipFile::CREATE) do |zipfile|
           files.each do |file|
             zipfile.add(file, Pathname.new(file).expand_path) unless Pathname.new(file).directory?
