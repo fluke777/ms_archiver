@@ -55,7 +55,7 @@ module GDC
     end
 
     def get_s3_credentials
-      ini = IniFile.new(nil, {:parameter => '=' , :filename => @s3_credentials_file} )
+      ini = IniFile.new( @s3_credentials_file, :parameter => '=' )
       ini[:default]
     end
 
